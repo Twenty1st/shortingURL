@@ -9,7 +9,11 @@ import (
 )
 
 func database() *sql.DB {
-    connStr := "user=user123 password=123 dbname=short_urls_db sslmode=disable" // строка подключения
+    username := ""
+    password := ""
+    dbname := "short_urls_db"
+    connStr := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", username, password, dbname)
+
     db, err := sql.Open("postgres", connStr)
     if err != nil {
         fmt.Println("Error opening database:", err)
